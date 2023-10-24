@@ -1,4 +1,4 @@
-package main
+package bot
 
 import (
 	"os"
@@ -20,8 +20,8 @@ var (
 	}
 )
 
-func main() {
-	s, err := discordgo.New("Bot " + "tok")
+func Start(token string, ch chan<- bool) {
+	s, err := discordgo.New("Bot " + token)
 	if err != nil {
 		log.Fatal(err)
 	}

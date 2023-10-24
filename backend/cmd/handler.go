@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/charmbracelet/log"
 	"github.com/gocolly/colly"
-	"github.com/timhi/discordgoodreads/model"
+	"github.com/timhi/GooodReadsBot/model"
 )
 
 func SearchBook(title string) (model.Book, error) {
