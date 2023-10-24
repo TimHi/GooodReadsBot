@@ -1,6 +1,9 @@
 package cmd
 
 import (
+	"errors"
+	"net/url"
+
 	"github.com/charmbracelet/log"
 	"github.com/gocolly/colly"
 	"github.com/timhi/GooodReadsBot/Bot/model"
@@ -21,6 +24,7 @@ func SearchBook(title string) (model.Book, error) {
 		})
 
 		book.Rating = h.ChildText("span[class='minirating']")
+		book.Cover = h.ChildAttr("img[class='bookCover']", "src")
 	})
 
 	c.OnRequest(func(r *colly.Request) {
@@ -32,6 +36,12 @@ func SearchBook(title string) (model.Book, error) {
 		err = scrapeError
 	})
 
-	c.Visit("https://www.goodreads.com/search?utf8=✓&query=" + title)
+	c.OnHTML("h3[class='searchSubNavContainer']", func(h *colly.HTMLElement) {
+		if h.Text == "No results." {
+			err = errors.New("No results found for query: " + title)
+		}
+	})
+
+	c.Visit("https://www.goodreads.com/search?utf8=✓&query=" + url.PathEscape(title))
 	return book, err
 }
