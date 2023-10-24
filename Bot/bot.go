@@ -6,6 +6,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/charmbracelet/log"
+	"github.com/timhi/GooodReadsBot/Bot/cmd"
 )
 
 var (
@@ -21,6 +22,7 @@ var (
 )
 
 func Start(token string, ch chan<- bool) {
+	cmd.SearchBook("Aal")
 	s, err := discordgo.New("Bot " + token)
 	if err != nil {
 		log.Fatal(err)
@@ -36,8 +38,10 @@ func Start(token string, ch chan<- bool) {
 
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, os.Interrupt)
+
 	log.Info("Press Ctrl+C to exit")
 	<-stop
 
 	log.Info("Gracefully shutting down.")
+	ch <- true
 }
