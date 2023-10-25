@@ -6,7 +6,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/gocolly/colly"
-	"github.com/timhi/GooodReadsBot/Bot/model"
+	"github.com/timhi/gooodreadsbot/bot/model"
 )
 
 func SearchBook(title string) (model.Book, error) {

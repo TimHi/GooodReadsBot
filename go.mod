@@ -1,4 +1,4 @@
-module github.com/timhi/GooodReadsBot
+module github.com/timhi/gooodreadsbot
 
 go 1.21.3
 

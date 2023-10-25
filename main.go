@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gofor-little/env"
-	bot "github.com/timhi/GooodReadsBot/bot"
+	bot "github.com/timhi/gooodreadsbot/bot"
 )
 
 func main() {

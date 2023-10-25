@@ -7,7 +7,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/charmbracelet/log"
-	"github.com/timhi/GooodReadsBot/Bot/cmd"
+	"github.com/timhi/gooodreadsbot/bot/cmd"
 )
 
 var (
